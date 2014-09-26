@@ -5,7 +5,7 @@ module RSpec
     # @api private
     # Provides methods for enabling and disabling the maybe syntax
     module Syntax
-      MONKEYPATCHED_CLASSES = [
+      MONKEYMATCHERS = [
         RSpec::Matchers::BuiltIn::BaseMatcher,
         RSpec::Matchers::BuiltIn::RaiseError,
         RSpec::Matchers::BuiltIn::ThrowSymbol
@@ -24,8 +24,8 @@ module RSpec
           end
         end
 
-        MONKEYPATCHED_CLASSES.each do |klass|
-          klass.class_eval do
+        MONKEYMATCHERS.each do |matcher|
+          matcher.class_eval do
             alias old_matches? matches?
 
             def matches?(actual)
@@ -38,7 +38,7 @@ module RSpec
               return self
             end
 
-            def on_your_machine?() @your_machine end
+            def on_your_machine?() defined?(@your_machine) && @your_machine end
           end
         end
       end
@@ -52,8 +52,8 @@ module RSpec
           undef maybe
         end
 
-        MONKEYPATCHED_CLASSES.each do |klass|
-          klass.class_eval do
+        MONKEYMATCHERS.each do |matcher|
+          matcher.class_eval do
             undef matches?
             alias matches? old_matches?
             undef old_matches?
