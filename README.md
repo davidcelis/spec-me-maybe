@@ -1,4 +1,4 @@
-# spec-me-maybe [![Build Status](http://img.shields.io/badge/build-probably-yellow.svg)][travis]
+# spec-me-maybe [![Build Status][travis-badge]][travis]
 
 Are your tests order-dependent? Tired of all those randomly failing specs? Can't be bothered to use [Timecop][timecop]? Just give up and surrender. But at least use a proper syntax.
 
@@ -6,7 +6,7 @@ Introducing the `maybe` syntax for RSpec.
 
 [timecop]: https://github.com/travisjeffery/timecop
 [travis]: https://travis-ci.org/davidcelis/spec-me-maybe
-[travis-badge]: https://travis-ci.org/davidcelis/spec-me-maybe.svg?branch=master
+[travis-badge]: http://img.shields.io/badge/build-probably-yellow.svg
 
 ## Installation
 
@@ -32,6 +32,14 @@ Then, in your `spec_helper.rb` file:
 
 ```ruby
 require 'rspec/maybes'
+
+RSpec.configure do |config|
+  config.expect_with :rspec do |expectations|
+    # Enable the `maybe` syntax from spec-me-maybe, e.g.:
+    #   maybe(actual).will eq(expected)
+    expectations.syntax = :maybe
+  end
+end
 ```
 
 ## Usage
@@ -54,9 +62,9 @@ describe User do
 end
 ```
 
-Whereas `expect` would set up an `RSpec::Expectation`, `maybe` will instead set up an `RSpec::Maybe`. Also like Expectations, Maybes might or might not pass. In this case, however, it will pass randomly. But hey, maybe your Expectations were like that too.
+Whereas `expect` would set up an `RSpec::Expectations::ExpectationTarget`, `maybe` will instead set up an `RSpec::Maybe::MaybeTarget`. Like expectations, maybes may or may not fail. In the case of maybes, however, it will fail randomly. But hey, maybe your Expectations were like that too.
 
-If your colleagues' complaints of broken specs are totally bullshit because you're super sure they work on your machine, we've got you covered. Here's the same above example, but it'll totally always pass:
+If your colleagues' complaints of broken specs are totally bullshit because you're _super_ sure they work on your machine, we've got you covered. Here's the above example again, but this time it'll totally always pass:
 
 ```ruby
 describe User do
