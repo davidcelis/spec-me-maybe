@@ -62,7 +62,7 @@ describe User do
 end
 ```
 
-Whereas `expect` would set up an `RSpec::Expectations::ExpectationTarget`, `maybe` will instead set up an `RSpec::Maybe::MaybeTarget`. Like expectations, maybes may or may not fail. In the case of maybes, however, it will fail randomly. But hey, maybe your Expectations were like that too.
+Whereas `expect` would set up an `RSpec::Expectations::ExpectationTarget`, `maybe` will instead set up an `RSpec::Maybe::MaybeTarget`. Like expectations, maybes may or may not fail. In the case of maybes, however, they will fail randomly regardless of your code. But hey, maybe your Expectations were like that too.
 
 If your colleagues' complaints of broken specs are totally bullshit because you're _super_ sure they work on your machine, we've got you covered. Here's the above example again, but this time it'll totally always pass:
 
