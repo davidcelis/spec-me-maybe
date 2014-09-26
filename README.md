@@ -1,4 +1,4 @@
-# spec-me-maybe [![Build Status][travis-badge]][travis]
+# spec-me-maybe [![Build Status](http://img.shields.io/badge/build-probably-yellow.svg)][travis]
 
 Are your tests order-dependent? Tired of all those randomly failing specs? Can't be bothered to use [Timecop][timecop]? Just give up and surrender. But at least use a proper syntax.
 
