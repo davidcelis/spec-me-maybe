@@ -74,6 +74,40 @@ describe User do
 end
 ```
 
+## How it works
+
+In Ruby, what actually happens when you call a method is that you send a
+message to the receiver.
+
+```ruby
+class MyClass
+  def example_method(my_arg)
+    my_arg * 3
+  end
+end
+
+obj = MyClass.new
+obj = example_method(3) #=> 9
+
+obj.send(:my_method, 3) #=> 9
+```
+
+Additionally, you can set the parameters of these methods with a block
+using the #call method. Together, these two concepts form the core of
+how spec-me-maybe works.
+
+```ruby
+number = Proc.new {|str| "maybe"}
+
+number.call("me") #=> "maybe"
+
+```
+
+[More in-depth explanation here.](https://www.youtube.com/watch?v=fWNaR-rxAic)
+
+
+
+
 ## Contributing
 
 1. [Fork it](https://github.com/davidcelis/spec-me-maybe/fork)
