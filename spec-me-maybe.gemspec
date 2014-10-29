@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   DESCRIPTION
 
   spec.homepage      = 'https://github.com/davidcelis/spec-me-maybe'
-  spec.license       = 'MIT'
+  spec.license       = 'SPL'
 
   spec.files         = Dir['lib/**/*.rb']
   spec.test_files    = Dir['spec/**/*.rb']
